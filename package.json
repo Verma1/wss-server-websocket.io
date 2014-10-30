@@ -1,0 +1,9 @@
+{
+  "name": "wss-example",
+  "version": "0.0.1",
+  "description": "my first wss app",
+  "dependencies": {
+    "websocket.io": "0.2.1",
+    "express": "^4.4.5"
+  }
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+  <title>WSS Test</title>
+</head>
+<body>
+<div id="out"></div>
+<script>
+  var wss = new WebSocket("wss://localhost:9021");
+  var out = document.getElementById("out");
+  wss.onmessage = function(e) {
+    out.innerHTML = "<div>" + e.data + "</div>";
+  }
+</script>
+</body>
+</html>
+

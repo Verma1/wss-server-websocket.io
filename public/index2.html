@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>WSS client sample</title>
+    <style>
+      body {
+        font-family: "Helvetica Neue", helvetica, arial;
+        padding: 15px;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul li {
+        line-height: 1.4;
+      }
+    </style>
+    <script type="application/javascript" src="./jquery-2.1.0.min.js"></script>
+    <script type="application/javascript">
+     $(document).ready(function() {
+       var host = location.origin.replace(/^https/, 'wss')
+       var ws = new WebSocket(host);
+       ws.onmessage = function (event) {
+         console.log(event)
+         var li = document.createElement('li');
+         li.innerHTML = event.data;
+         document.querySelector('#messages').appendChild(li);
+       };
+       $("#send").click(function() {
+         console.log("toggle led clicked");
+         ws.send("toggle led");
+         return false;
+       });
+     });
+    </script>
+  </head>
+  <body>
+    <div class="col-sm-1">
+      <button id="send" type="submit" class="btn btn-default btn-sm">Send</button>
+    </div>
+    <h1>Messages</h1>
+    <ul id='messages'></ul>
+  </body>
+</html>
